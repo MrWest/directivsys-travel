@@ -29,10 +29,10 @@ function HotelsContent() {
   });
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen bg-slate-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2">Hotels in Barbados</h1>
+          <h1 className="text-4xl font-bold text-slate-800 mb-2">Hotels in Barbados</h1>
           <p className="text-slate-400">{filtered.length} luxury properties available</p>
         </div>
 
@@ -43,12 +43,12 @@ function HotelsContent() {
             placeholder="Search hotels..."
             value={search}
             onChange={e => setSearch(e.target.value)}
-            className="flex-1 min-w-[200px] px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+            className="flex-1 min-w-[200px] px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-400"
           />
           <select
             value={maxPrice}
             onChange={e => setMaxPrice(parseInt(e.target.value))}
-            className="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-amber-500"
+            className="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 shadow-sm focus:outline-none focus:border-sky-400"
           >
             <option value={0}>Any Price</option>
             <option value={300}>Under $300/night</option>
@@ -58,7 +58,7 @@ function HotelsContent() {
           <select
             value={minStars}
             onChange={e => setMinStars(parseInt(e.target.value))}
-            className="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-amber-500"
+            className="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 shadow-sm focus:outline-none focus:border-sky-400"
           >
             <option value={0}>Any Stars</option>
             <option value={3}>3+ Stars</option>
@@ -68,7 +68,7 @@ function HotelsContent() {
         </div>
 
         {search && (
-          <div className="mb-6 px-4 py-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 text-sm">
+          <div className="mb-6 px-4 py-3 rounded-xl bg-sky-50 border border-sky-200 text-sky-600 text-sm">
             🤖 AI search active: showing hotels matching &quot;{search}&quot; — {filtered.length} results
           </div>
         )}
@@ -76,26 +76,26 @@ function HotelsContent() {
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map(hotel => (
-            <Link key={hotel.id} href={`/hotels/${hotel.id}`} className="group rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-amber-500/30 transition-all">
+            <Link key={hotel.id} href={`/hotels/${hotel.id}`} className="group rounded-2xl overflow-hidden bg-white/80 border border-slate-200 hover:border-sky-200 transition-all">
               <div className="relative h-52 overflow-hidden">
                 <Image src={hotel.image} alt={hotel.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
-                <div className="absolute top-3 left-3 px-2 py-1 rounded-lg bg-slate-900/80 text-amber-400 text-xs font-medium">
+                <div className="absolute top-3 left-3 px-2 py-1 rounded-lg bg-white/80 text-sky-600 text-xs font-medium">
                   {'★'.repeat(hotel.stars)}
                 </div>
-                <div className="absolute top-3 right-3 px-3 py-1 rounded-lg bg-amber-500 text-slate-900 text-sm font-bold">
+                <div className="absolute top-3 right-3 px-3 py-1 rounded-lg bg-sky-500 text-white text-sm font-bold">
                   ${hotel.roomTypes[0].pricePerNight}/night
                 </div>
               </div>
               <div className="p-5">
-                <h3 className="text-white font-bold text-xl mb-1">{hotel.name}</h3>
-                <p className="text-slate-500 text-sm mb-3">📍 {hotel.location}</p>
+                <h3 className="text-slate-800 font-bold text-xl mb-1">{hotel.name}</h3>
+                <p className="text-slate-400 text-sm mb-3">📍 {hotel.location}</p>
                 <p className="text-slate-400 text-sm mb-4 line-clamp-2">{hotel.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {hotel.amenities.slice(0, 3).map(a => (
-                    <span key={a} className="px-2 py-1 rounded-lg bg-slate-700/50 text-slate-400 text-xs">{a}</span>
+                    <span key={a} className="px-2 py-1 rounded-lg bg-slate-100/80 text-slate-400 text-xs">{a}</span>
                   ))}
                   {hotel.amenities.length > 3 && (
-                    <span className="px-2 py-1 rounded-lg bg-slate-700/50 text-slate-500 text-xs">+{hotel.amenities.length - 3} more</span>
+                    <span className="px-2 py-1 rounded-lg bg-slate-100/80 text-slate-400 text-xs">+{hotel.amenities.length - 3} more</span>
                   )}
                 </div>
               </div>
@@ -107,7 +107,7 @@ function HotelsContent() {
           <div className="text-center py-20">
             <div className="text-5xl mb-4">🏨</div>
             <p className="text-slate-400 text-lg">No hotels match your search.</p>
-            <button onClick={() => { setSearch(''); setMaxPrice(0); setMinStars(0); }} className="mt-4 text-amber-400 hover:text-amber-300 text-sm">Clear filters</button>
+            <button onClick={() => { setSearch(''); setMaxPrice(0); setMinStars(0); }} className="mt-4 text-sky-600 hover:text-sky-500 text-sm">Clear filters</button>
           </div>
         )}
       </div>

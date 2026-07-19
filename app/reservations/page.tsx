@@ -29,13 +29,13 @@ export default function ReservationsPage() {
   const displayed = tab === 'upcoming' ? upcoming : tab === 'past' ? past : myReservations;
 
   const typeIcon: Record<string, string> = { hotel: '🏨', flight: '✈️', taxi: '🚗', dining: '🍽️' };
-  const typeColor: Record<string, string> = { hotel: 'border-amber-500/30', flight: 'border-sky-500/30', taxi: 'border-emerald-500/30', dining: 'border-rose-500/30' };
+  const typeColor: Record<string, string> = { hotel: 'border-sky-200', flight: 'border-sky-200', taxi: 'border-emerald-200', dining: 'border-rose-200' };
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen bg-slate-50 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2">My Reservations</h1>
+          <h1 className="text-4xl font-bold text-slate-700 mb-2">My Reservations</h1>
           <p className="text-slate-400">{myReservations.length} total reservations</p>
         </div>
 
@@ -46,7 +46,7 @@ export default function ReservationsPage() {
               key={t}
               onClick={() => setTab(t)}
               className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors capitalize ${
-                tab === t ? 'bg-amber-500 text-slate-900' : 'bg-slate-800 text-slate-400 hover:text-white'
+                tab === t ? 'bg-sky-500 text-white' : 'bg-white text-slate-400 hover:text-slate-700'
               }`}
             >
               {t} {t === 'upcoming' ? `(${upcoming.length})` : t === 'past' ? `(${past.length})` : `(${myReservations.length})`}
@@ -56,42 +56,42 @@ export default function ReservationsPage() {
 
         {/* Reservations */}
         {displayed.length === 0 ? (
-          <div className="p-12 rounded-2xl bg-slate-800/50 border border-slate-700/50 text-center">
+          <div className="p-12 rounded-2xl bg-white/80 border border-slate-200 text-center">
             <div className="text-5xl mb-4">🌴</div>
             <p className="text-slate-400 text-lg">No reservations here yet.</p>
-            <p className="text-amber-400 text-sm mt-3">💬 Ask the AI to help you plan your trip!</p>
+            <p className="text-sky-600 text-sm mt-3">💬 Ask the AI to help you plan your trip!</p>
           </div>
         ) : (
           <div className="space-y-4">
             {displayed.map(r => (
-              <div key={r.id} className={`p-6 rounded-2xl bg-slate-800/50 border ${typeColor[r.type] || 'border-slate-700/50'}`}>
+              <div key={r.id} className={`p-6 rounded-2xl bg-white/80 border ${typeColor[r.type] || 'border-slate-200'}`}>
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-start gap-4">
                     <div className="text-3xl">{typeIcon[r.type] || '🎫'}</div>
                     <div>
-                      <div className="text-white font-bold text-lg">{getLabel(r)}</div>
+                      <div className="text-slate-700 font-bold text-lg">{getLabel(r)}</div>
                       <div className="text-slate-400 text-sm mt-1">
                         {getDate(r)}{getTime(r) ? ` at ${getTime(r)}` : ''}
                         {(getD(r).guests as number) ? ` · ${getD(r).guests} guests` : ''}
                         {(getD(r).partySize as number) ? ` · Party of ${getD(r).partySize}` : ''}
                         {(getD(r).passengers as number) ? ` · ${getD(r).passengers} passengers` : ''}
                       </div>
-                      {Boolean(getD(r).roomType) && <div className="text-slate-500 text-xs mt-1">Room: {getD(r).roomType as string}</div>}
-                      {Boolean(getD(r).cabinClass) && <div className="text-slate-500 text-xs mt-1">Class: {getD(r).cabinClass as string}</div>}
-                      {Boolean(getD(r).vehicleType) && <div className="text-slate-500 text-xs mt-1">Vehicle: {getD(r).vehicleType as string}</div>}
+                      {Boolean(getD(r).roomType) && <div className="text-slate-400 text-xs mt-1">Room: {getD(r).roomType as string}</div>}
+                      {Boolean(getD(r).cabinClass) && <div className="text-slate-400 text-xs mt-1">Class: {getD(r).cabinClass as string}</div>}
+                      {Boolean(getD(r).vehicleType) && <div className="text-slate-400 text-xs mt-1">Vehicle: {getD(r).vehicleType as string}</div>}
                     </div>
                   </div>
                   <div className="flex flex-col items-end gap-2">
                     <span className={`px-3 py-1 rounded-lg text-xs font-medium ${
-                      r.status === 'confirmed' ? 'bg-emerald-500/20 text-emerald-400' :
-                      r.status === 'cancelled' ? 'bg-red-500/20 text-red-400' :
-                      'bg-amber-500/20 text-amber-400'
+                      r.status === 'confirmed' ? 'bg-emerald-50 text-emerald-600' :
+                      r.status === 'cancelled' ? 'bg-red-50 text-red-500' :
+                      'bg-sky-50 text-sky-600'
                     }`}>{r.status}</span>
-                    {Boolean((getD(r).totalPrice as number)) && <div className="text-amber-400 font-bold">${getD(r).totalPrice as number}</div>}
+                    {Boolean((getD(r).totalPrice as number)) && <div className="text-sky-600 font-bold">${getD(r).totalPrice as number}</div>}
                     {r.status === 'confirmed' && (
                       <button
                         onClick={() => cancelReservation(r.id)}
-                        className="text-red-400 hover:text-red-300 text-xs transition-colors"
+                        className="text-red-500 hover:text-red-600 text-xs transition-colors"
                       >
                         Cancel
                       </button>
