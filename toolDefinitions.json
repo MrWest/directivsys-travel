@@ -1,0 +1,188 @@
+[
+  {
+    "toolId": 1,
+    "toolName": "searchHotels",
+    "description": "Searches the hotel catalog by destination, dates, guest count, price range, star rating, or amenities. Use when the user wants to find a hotel or browse options. Navigates to /hotels with filtered results after returning data.",
+    "isActive": true,
+    "parameters": [
+      { "parameterId": 101, "parameterName": "destination", "parameterType": "string", "description": "City, region, or area. e.g. 'Barbados', 'Christ Church', 'near the beach'.", "isRequired": false, "enumValues": null },
+      { "parameterId": 102, "parameterName": "checkIn", "parameterType": "string", "description": "Check-in date in YYYY-MM-DD format.", "isRequired": false, "enumValues": null },
+      { "parameterId": 103, "parameterName": "checkOut", "parameterType": "string", "description": "Check-out date in YYYY-MM-DD format.", "isRequired": false, "enumValues": null },
+      { "parameterId": 104, "parameterName": "guests", "parameterType": "number", "description": "Number of guests. Filters by room capacity.", "isRequired": false, "enumValues": null },
+      { "parameterId": 105, "parameterName": "maxPricePerNight", "parameterType": "number", "description": "Maximum price per night in USD.", "isRequired": false, "enumValues": null },
+      { "parameterId": 106, "parameterName": "minStars", "parameterType": "number", "description": "Minimum star rating (1–5).", "isRequired": false, "enumValues": null },
+      { "parameterId": 107, "parameterName": "keyword", "parameterType": "string", "description": "Free-text amenity or feature. e.g. 'pool', 'ocean view', 'spa', 'all-inclusive', 'pet-friendly'.", "isRequired": false, "enumValues": null }
+    ]
+  },
+  {
+    "toolId": 2,
+    "toolName": "checkHotelAvailability",
+    "description": "Checks if a specific hotel has availability for given dates, guest count, and room type. Returns pricing and night count. Use before bookHotel to confirm availability.",
+    "isActive": true,
+    "parameters": [
+      { "parameterId": 201, "parameterName": "hotelId", "parameterType": "string", "description": "Hotel identifier from the catalog.", "isRequired": true, "enumValues": ["sandy-lane", "crane-resort", "hilton-barbados", "turtle-beach", "sea-breeze", "bougainvillea", "little-arches", "accra-beach"] },
+      { "parameterId": 202, "parameterName": "checkIn", "parameterType": "string", "description": "Check-in date in YYYY-MM-DD format.", "isRequired": true, "enumValues": null },
+      { "parameterId": 203, "parameterName": "checkOut", "parameterType": "string", "description": "Check-out date in YYYY-MM-DD format.", "isRequired": true, "enumValues": null },
+      { "parameterId": 204, "parameterName": "guests", "parameterType": "number", "description": "Number of guests.", "isRequired": false, "enumValues": null },
+      { "parameterId": 205, "parameterName": "roomType", "parameterType": "string", "description": "Room type preference. e.g. 'Deluxe Room', 'Ocean Suite', 'Villa'.", "isRequired": false, "enumValues": null }
+    ]
+  },
+  {
+    "toolId": 3,
+    "toolName": "bookHotel",
+    "description": "Books a hotel room for the current user. Validates availability, capacity, and date logic before confirming. Navigates to /reservations on success. Use checkHotelAvailability first if unsure about availability.",
+    "isActive": true,
+    "parameters": [
+      { "parameterId": 301, "parameterName": "hotelId", "parameterType": "string", "description": "Hotel identifier.", "isRequired": true, "enumValues": ["sandy-lane", "crane-resort", "hilton-barbados", "turtle-beach", "sea-breeze", "bougainvillea", "little-arches", "accra-beach"] },
+      { "parameterId": 302, "parameterName": "checkIn", "parameterType": "string", "description": "Check-in date in YYYY-MM-DD format.", "isRequired": true, "enumValues": null },
+      { "parameterId": 303, "parameterName": "checkOut", "parameterType": "string", "description": "Check-out date in YYYY-MM-DD format.", "isRequired": true, "enumValues": null },
+      { "parameterId": 304, "parameterName": "guests", "parameterType": "number", "description": "Number of guests.", "isRequired": true, "enumValues": null },
+      { "parameterId": 305, "parameterName": "roomType", "parameterType": "string", "description": "Room type. If omitted, the first available room type is selected.", "isRequired": false, "enumValues": null },
+      { "parameterId": 306, "parameterName": "specialRequests", "parameterType": "string", "description": "Optional special requests or notes for the hotel.", "isRequired": false, "enumValues": null }
+    ]
+  },
+  {
+    "toolId": 4,
+    "toolName": "updateHotelBooking",
+    "description": "Modifies an existing hotel reservation owned by the current user. Only the fields provided will change. Use getMyReservations first to find the reservationId.",
+    "isActive": true,
+    "parameters": [
+      { "parameterId": 401, "parameterName": "reservationId", "parameterType": "string", "description": "The ID of the hotel reservation to update.", "isRequired": true, "enumValues": null },
+      { "parameterId": 402, "parameterName": "checkIn", "parameterType": "string", "description": "New check-in date in YYYY-MM-DD format.", "isRequired": false, "enumValues": null },
+      { "parameterId": 403, "parameterName": "checkOut", "parameterType": "string", "description": "New check-out date in YYYY-MM-DD format.", "isRequired": false, "enumValues": null },
+      { "parameterId": 404, "parameterName": "guests", "parameterType": "number", "description": "New guest count.", "isRequired": false, "enumValues": null },
+      { "parameterId": 405, "parameterName": "roomType", "parameterType": "string", "description": "New room type.", "isRequired": false, "enumValues": null },
+      { "parameterId": 406, "parameterName": "specialRequests", "parameterType": "string", "description": "Updated special requests.", "isRequired": false, "enumValues": null }
+    ]
+  },
+  {
+    "toolId": 5,
+    "toolName": "searchFlights",
+    "description": "Searches available flights by origin, destination, date, passengers, cabin class, or price. Navigates to /flights with results. Use when the user wants to find or browse flights.",
+    "isActive": true,
+    "parameters": [
+      { "parameterId": 501, "parameterName": "origin", "parameterType": "string", "description": "Departure city or airport code. e.g. 'Miami', 'MIA', 'New York'.", "isRequired": false, "enumValues": null },
+      { "parameterId": 502, "parameterName": "destination", "parameterType": "string", "description": "Arrival city or airport code. e.g. 'Barbados', 'BGI', 'Bridgetown'.", "isRequired": false, "enumValues": null },
+      { "parameterId": 503, "parameterName": "date", "parameterType": "string", "description": "Travel date in YYYY-MM-DD format.", "isRequired": false, "enumValues": null },
+      { "parameterId": 504, "parameterName": "passengers", "parameterType": "number", "description": "Number of passengers.", "isRequired": false, "enumValues": null },
+      { "parameterId": 505, "parameterName": "maxPrice", "parameterType": "number", "description": "Maximum price per seat in USD.", "isRequired": false, "enumValues": null },
+      { "parameterId": 506, "parameterName": "cabinClass", "parameterType": "string", "description": "Cabin class preference.", "isRequired": false, "enumValues": ["economy", "business"] }
+    ]
+  },
+  {
+    "toolId": 6,
+    "toolName": "bookFlight",
+    "description": "Books a flight for the current user. Validates seat availability before confirming. Navigates to /reservations on success.",
+    "isActive": true,
+    "parameters": [
+      { "parameterId": 601, "parameterName": "flightId", "parameterType": "string", "description": "Flight identifier from the catalog.", "isRequired": true, "enumValues": null },
+      { "parameterId": 602, "parameterName": "passengers", "parameterType": "number", "description": "Number of passengers.", "isRequired": true, "enumValues": null },
+      { "parameterId": 603, "parameterName": "cabinClass", "parameterType": "string", "description": "Cabin class.", "isRequired": false, "enumValues": ["economy", "business"] },
+      { "parameterId": 604, "parameterName": "passengerNames", "parameterType": "string", "description": "Comma-separated passenger names (optional).", "isRequired": false, "enumValues": null }
+    ]
+  },
+  {
+    "toolId": 7,
+    "toolName": "searchTaxis",
+    "description": "Searches available transfer and taxi options by passenger count, vehicle type, or price. Navigates to /transfers with results.",
+    "isActive": true,
+    "parameters": [
+      { "parameterId": 701, "parameterName": "passengers", "parameterType": "number", "description": "Number of passengers. Filters by vehicle capacity.", "isRequired": false, "enumValues": null },
+      { "parameterId": 702, "parameterName": "vehicleType", "parameterType": "string", "description": "Vehicle type preference. e.g. 'sedan', 'SUV', 'minivan', 'luxury'.", "isRequired": false, "enumValues": null },
+      { "parameterId": 703, "parameterName": "maxPrice", "parameterType": "number", "description": "Maximum base price in USD.", "isRequired": false, "enumValues": null }
+    ]
+  },
+  {
+    "toolId": 8,
+    "toolName": "bookTaxi",
+    "description": "Books a taxi or airport transfer for the current user. Navigates to /reservations on success.",
+    "isActive": true,
+    "parameters": [
+      { "parameterId": 801, "parameterName": "taxiId", "parameterType": "string", "description": "Transfer option identifier from the catalog.", "isRequired": true, "enumValues": null },
+      { "parameterId": 802, "parameterName": "pickupLocation", "parameterType": "string", "description": "Pickup address or landmark.", "isRequired": true, "enumValues": null },
+      { "parameterId": 803, "parameterName": "dropoffLocation", "parameterType": "string", "description": "Drop-off address or landmark.", "isRequired": true, "enumValues": null },
+      { "parameterId": 804, "parameterName": "date", "parameterType": "string", "description": "Transfer date in YYYY-MM-DD format.", "isRequired": true, "enumValues": null },
+      { "parameterId": 805, "parameterName": "time", "parameterType": "string", "description": "Pickup time in HH:mm 24-hour format.", "isRequired": true, "enumValues": null },
+      { "parameterId": 806, "parameterName": "passengers", "parameterType": "number", "description": "Number of passengers.", "isRequired": true, "enumValues": null },
+      { "parameterId": 807, "parameterName": "flightNumber", "parameterType": "string", "description": "Flight number for airport pickups (optional).", "isRequired": false, "enumValues": null }
+    ]
+  },
+  {
+    "toolId": 9,
+    "toolName": "searchRestaurants",
+    "description": "Searches restaurants by cuisine, party size, price range, or features. Navigates to /dining with results. Use when the user wants to find a place to eat.",
+    "isActive": true,
+    "parameters": [
+      { "parameterId": 901, "parameterName": "cuisine", "parameterType": "string", "description": "Cuisine type. e.g. 'Caribbean', 'seafood', 'Italian', 'sushi'.", "isRequired": false, "enumValues": null },
+      { "parameterId": 902, "parameterName": "partySize", "parameterType": "number", "description": "Number of diners.", "isRequired": false, "enumValues": null },
+      { "parameterId": 903, "parameterName": "priceRange", "parameterType": "string", "description": "Price range indicator.", "isRequired": false, "enumValues": ["$", "$$", "$$$", "$$$$"] },
+      { "parameterId": 904, "parameterName": "keyword", "parameterType": "string", "description": "Feature or characteristic. e.g. 'beachfront', 'sunset view', 'outdoor', 'romantic', 'live music'.", "isRequired": false, "enumValues": null }
+    ]
+  },
+  {
+    "toolId": 10,
+    "toolName": "bookDining",
+    "description": "Books a restaurant reservation for the current user. Validates party size and available time slots before confirming. Navigates to /reservations on success.",
+    "isActive": true,
+    "parameters": [
+      { "parameterId": 1001, "parameterName": "restaurantId", "parameterType": "string", "description": "Restaurant identifier from the catalog.", "isRequired": true, "enumValues": null },
+      { "parameterId": 1002, "parameterName": "date", "parameterType": "string", "description": "Reservation date in YYYY-MM-DD format.", "isRequired": true, "enumValues": null },
+      { "parameterId": 1003, "parameterName": "time", "parameterType": "string", "description": "Reservation time in HH:mm format. Must match one of the restaurant's available times.", "isRequired": true, "enumValues": null },
+      { "parameterId": 1004, "parameterName": "partySize", "parameterType": "number", "description": "Number of diners.", "isRequired": true, "enumValues": null },
+      { "parameterId": 1005, "parameterName": "dietaryRequirements", "parameterType": "string", "description": "Dietary restrictions or preferences (optional).", "isRequired": false, "enumValues": null },
+      { "parameterId": 1006, "parameterName": "occasion", "parameterType": "string", "description": "Special occasion note. e.g. 'anniversary', 'birthday'. Optional.", "isRequired": false, "enumValues": null }
+    ]
+  },
+  {
+    "toolId": 11,
+    "toolName": "getMyReservations",
+    "description": "Returns all active reservations for the current user. Optionally filtered by type. Navigates to /reservations. Use before cancel or update operations to find the correct reservationId.",
+    "isActive": true,
+    "parameters": [
+      { "parameterId": 1101, "parameterName": "type", "parameterType": "string", "description": "Filter by reservation type. Omit to return all types.", "isRequired": false, "enumValues": ["hotel", "flight", "taxi", "dining"] }
+    ]
+  },
+  {
+    "toolId": 12,
+    "toolName": "cancelReservation",
+    "description": "Cancels an existing reservation owned by the current user. Use getMyReservations first to find the correct reservationId.",
+    "isActive": true,
+    "parameters": [
+      { "parameterId": 1201, "parameterName": "reservationId", "parameterType": "string", "description": "The ID of the reservation to cancel.", "isRequired": true, "enumValues": null }
+    ]
+  },
+  {
+    "toolId": 13,
+    "toolName": "getAllHotels",
+    "description": "Returns the complete hotel catalog with all details. Navigates to /hotels. Use when the user asks to see all hotels without specific filters.",
+    "isActive": true,
+    "parameters": []
+  },
+  {
+    "toolId": 14,
+    "toolName": "getAllRestaurants",
+    "description": "Returns the complete restaurant catalog. Navigates to /dining. Use when the user asks to see all restaurants without specific filters.",
+    "isActive": true,
+    "parameters": []
+  },
+  {
+    "toolId": 15,
+    "toolName": "navigateTo",
+    "description": "Navigates the user to a specific page or entity detail within the platform. Use when the user asks to go somewhere or when a completed action should redirect to a relevant page.",
+    "isActive": true,
+    "parameters": [
+      { "parameterId": 1501, "parameterName": "destination", "parameterType": "string", "description": "Named page destination. Ignored if entityId is provided.", "isRequired": false, "enumValues": ["home", "hotels", "flights", "transfers", "dining", "reservations", "dashboard", "login", "search"] },
+      { "parameterId": 1502, "parameterName": "entityId", "parameterType": "string", "description": "Entity identifier to navigate to that entity's detail page.", "isRequired": false, "enumValues": null },
+      { "parameterId": 1503, "parameterName": "entityType", "parameterType": "string", "description": "Type of entity when entityId is provided.", "isRequired": false, "enumValues": ["hotel", "flight", "taxi", "restaurant"] }
+    ]
+  },
+  {
+    "toolId": 16,
+    "toolName": "searchAll",
+    "description": "Searches across all entity types — hotels, restaurants, and transfers — using a single keyword. Use when the user asks a broad question without specifying a category. Returns grouped results.",
+    "isActive": true,
+    "parameters": [
+      { "parameterId": 1601, "parameterName": "keyword", "parameterType": "string", "description": "Free-text term matched against all entities. Extract the core concept: 'luxury', 'beachfront', 'ocean view', 'pet-friendly', 'airport'.", "isRequired": true, "enumValues": null }
+    ]
+  }
+]
