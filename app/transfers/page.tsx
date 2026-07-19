@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { TAXIS as taxis } from '../../data/sampleData';
 import { useAuth } from '../../context/AuthContext';
 import Link from 'next/link';
@@ -29,14 +30,24 @@ export default function TransfersPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map(taxi => (
-            <div key={taxi.id} className="p-6 rounded-2xl bg-white/80 border border-slate-200 hover:border-emerald-200 transition-all">
-              <div className="flex items-center justify-between mb-4">
-                <div className="text-4xl">
-                  {taxi.vehicleType === 'sedan' ? '🚗' : taxi.vehicleType === 'suv' ? '🚙' : taxi.vehicleType === 'minivan' ? '🚐' : taxi.vehicleType === 'luxury' ? '🏎️' : '🚌'}
-                </div>
-                <span className="px-3 py-1 rounded-lg bg-emerald-50 text-emerald-600 text-sm font-medium">{taxi.vehicleType}</span>
+            <div key={taxi.id} className="rounded-2xl bg-white border border-slate-200 hover:border-sky-300 hover:shadow-md transition-all overflow-hidden">
+              {/* Vehicle photo */}
+              <div className="relative w-full" style={{ height: '180px' }}>
+                <Image
+                  src={taxi.image || `/taxis/${taxi.vehicleType}.jpg`}
+                  alt={taxi.name}
+                  fill
+                  className="object-cover"
+                />
+                <span className="absolute top-3 right-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-sky-600 text-xs font-semibold shadow-sm capitalize">{taxi.vehicleType}</span>
               </div>
-              <h3 className="text-slate-800 font-bold text-xl mb-1">{taxi.name}</h3>
+              <div className="p-5">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-xl">
+                  {taxi.vehicleType === 'sedan' ? '🚗' : taxi.vehicleType === 'suv' ? '🚙' : taxi.vehicleType === 'minivan' ? '🚐' : taxi.vehicleType === 'luxury' ? '🏎️' : '🚌'}
+                </span>
+                <h3 className="text-slate-800 font-bold text-lg">{taxi.name}</h3>
+              </div>
               <p className="text-slate-400 text-sm mb-4">{taxi.description}</p>
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between text-sm">
@@ -66,6 +77,7 @@ export default function TransfersPage() {
                   Sign In to Book
                 </Link>
               )}
+              </div>{/* end p-5 */}
             </div>
           ))}
         </div>
