@@ -50,8 +50,8 @@ export default function HomePage() {
             <h1
               className="text-5xl md:text-7xl font-extrabold text-center leading-tight"
               style={{
-                color: '#38bdf8',
-                textShadow: '0 2px 20px rgba(0,0,0,0.4), 0 1px 6px rgba(0,0,0,0.5)',
+                color: '#ffffff',
+                textShadow: '0 2px 24px rgba(0,0,0,0.5), 0 1px 8px rgba(0,0,0,0.7)',
               }}
             >
               Your Barbados Dream Trip

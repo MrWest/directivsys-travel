@@ -29,7 +29,7 @@ export default function Header() {
             >
               Barbados Bliss
             </span>
-            <span className="text-2xl leading-none">🌴</span>
+            <span className="text-2xl leading-none" style={{ color: 'initial', fontStyle: 'normal' }}>🌴</span>
           </Link>
 
           {/* Nav Links */}
