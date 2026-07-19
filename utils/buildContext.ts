@@ -74,12 +74,28 @@ export function buildUserContext(
     ? `Active reservations: ${activeReservations.slice(0, 3).map(formatReservationSummary).join('; ')}`
     : 'No active reservations yet.';
 
-  const preferences = [
-    `Platform: DirectivSys Travel — Barbados`,
+  const prefs = user.preferences;
+  const preferenceLines: string[] = [
+    `Platform: Barbados Bliss — AI-Powered Travel Concierge`,
     `Available: 8 luxury hotels, 20 flights, 6 transfer options, 10 restaurants`,
     `Booking rules: Check-in must be future date; cancellation available anytime`,
     `Currency: USD`,
-  ].join(' | ');
+  ];
+  if (prefs) {
+    preferenceLines.push(`Guest travel style: ${prefs.travelStyle}`);
+    preferenceLines.push(
+      `Loyalty tier: ${prefs.loyaltyTier}` +
+      (prefs.loyaltyTier === 'platinum' ? ' — offer premium upgrades and VIP options first' :
+       prefs.loyaltyTier === 'gold' ? ' — proactively suggest value-add experiences' : '')
+    );
+    preferenceLines.push(`Preferred flight class: ${prefs.preferredClass}`);
+    if (prefs.dietaryNeeds.length > 0) {
+      preferenceLines.push(`Dietary needs: ${prefs.dietaryNeeds.join(', ')} — always mention vegetarian/dietary options when suggesting restaurants`);
+    }
+    preferenceLines.push(`Guest interests: ${prefs.interests.join(', ')} — tailor all recommendations to these interests`);
+    preferenceLines.push(`Persona: ${prefs.tagline}`);
+  }
+  const preferences = preferenceLines.join(' | ');
 
   return {
     userId: user.id,

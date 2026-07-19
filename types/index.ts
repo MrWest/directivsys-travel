@@ -171,12 +171,22 @@ export interface Reservation {
 
 // ─── USER ────────────────────────────────────────────────────────────────────
 
+export interface UserPreferences {
+  travelStyle: string;       // e.g. 'luxury', 'adventure', 'family', 'budget', 'romantic'
+  dietaryNeeds: string[];    // e.g. ['vegetarian', 'gluten-free']
+  interests: string[];       // e.g. ['beaches', 'food', 'watersports']
+  loyaltyTier: 'standard' | 'silver' | 'gold' | 'platinum';
+  preferredClass: 'economy' | 'business' | 'first';
+  tagline: string;           // short persona description shown on login card
+}
+
 export interface User {
   id: string;
   name: string;
   email: string;
   password: string;
   avatar?: string;
+  preferences?: UserPreferences;
 }
 
 // ─── DIRECTIVSYS SDK ─────────────────────────────────────────────────────────

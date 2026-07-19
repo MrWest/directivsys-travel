@@ -1,8 +1,9 @@
 'use client';
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Reservation } from '../types/index';
-import { DEMO_RESERVATIONS as sampleReservations } from '../data/sampleData';
+import { DEMO_RESERVATIONS } from '../data/sampleData';
+import { useAuth } from './AuthContext';
 
 interface ReservationContextType {
   reservations: Reservation[];
@@ -14,7 +15,17 @@ interface ReservationContextType {
 const ReservationContext = createContext<ReservationContextType | null>(null);
 
 export function ReservationProvider({ children }: { children: React.ReactNode }) {
-  const [reservations, setReservations] = useState<Reservation[]>(sampleReservations);
+  const { user } = useAuth();
+  const [reservations, setReservations] = useState<Reservation[]>([]);
+
+  // Re-seed reservations whenever the logged-in user changes
+  useEffect(() => {
+    if (user) {
+      setReservations(DEMO_RESERVATIONS.filter(r => r.userId === user.id));
+    } else {
+      setReservations([]);
+    }
+  }, [user]);
 
   const addReservation = (r: Reservation) => setReservations(prev => [...prev, r]);
 
