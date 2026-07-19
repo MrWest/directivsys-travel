@@ -11,7 +11,7 @@ const geist = Geist({ subsets: ['latin'], variable: '--font-geist' });
 const pacifico = Pacifico({ subsets: ['latin'], weight: '400', variable: '--font-pacifico' });
 
 export const metadata: Metadata = {
-  title: 'DirectivTravel — Barbados',
+  title: 'Barbados Bliss — Luxury Travel',
   description: 'Luxury travel booking powered by DirectivSys AI orchestration',
 };
 

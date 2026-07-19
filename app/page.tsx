@@ -31,32 +31,37 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
 
-      {/* HERO: full-bleed photo at top, fades to white, subtitle+CTAs on white below */}
-      <section className="relative">
+      {/* HERO — Concept C: vivid photo, title centered near top, smooth fade to white, subtitle+CTAs on white */}
+      <section className="relative" style={{ minHeight: 'calc(100vh - 64px)' }}>
 
-        {/* Photo block — NO overlay at all */}
-        <div className="relative w-full" style={{ height: '72vh' }}>
+        {/* Photo — top 58% of viewport, NO overlay */}
+        <div className="relative w-full" style={{ height: '58vh' }}>
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: "url('/hotels/sandy-lane.jpg')" }}
           />
-          {/* Bottom fade to white */}
-          <div className="absolute bottom-0 left-0 right-0" style={{ height: '38%', background: 'linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0.85) 40%, transparent 100%)' }} />
-
-          {/* Title anchored to top of photo */}
-          <div className="absolute top-0 left-0 right-0 pt-10 px-6 md:px-16 z-10">
+          {/* Smooth fade to white at bottom */}
+          <div
+            className="absolute bottom-0 left-0 right-0"
+            style={{ height: '45%', background: 'linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0.9) 30%, transparent 100%)' }}
+          />
+          {/* Title — centered, near top of photo */}
+          <div className="absolute inset-0 flex items-start justify-center pt-12 px-4 z-10">
             <h1
-              className="text-5xl md:text-7xl font-extrabold text-white leading-tight"
-              style={{ textShadow: '0 2px 24px rgba(0,0,0,0.45), 0 1px 6px rgba(0,0,0,0.6)' }}
+              className="text-5xl md:text-7xl font-extrabold text-center leading-tight"
+              style={{
+                color: '#38bdf8',
+                textShadow: '0 2px 20px rgba(0,0,0,0.4), 0 1px 6px rgba(0,0,0,0.5)',
+              }}
             >
               Your Barbados Dream Trip
             </h1>
           </div>
         </div>
 
-        {/* Subtitle + CTAs — on white, below the photo */}
-        <div className="bg-white pt-4 pb-10 flex flex-col items-center px-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-50 border border-sky-200 text-sky-600 text-sm font-medium mb-5 shadow-sm">
+        {/* Subtitle + badge + CTAs — on white below the photo */}
+        <div className="bg-white pt-3 pb-8 flex flex-col items-center px-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-50 border border-sky-200 text-sky-600 text-sm font-medium mb-4 shadow-sm">
             <span>✨</span><span>Powered by DirectivSys AI Orchestration</span>
           </div>
           <p className="text-lg md:text-xl text-slate-600 text-center max-w-2xl mb-6">

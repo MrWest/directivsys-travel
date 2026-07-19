@@ -23,13 +23,13 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-1.5">
-            <span className="text-2xl leading-none">🌴</span>
             <span
-              className="text-sky-500 text-2xl leading-none tracking-tight"
+              className="text-sky-500 text-2xl leading-none"
               style={{ fontFamily: 'var(--font-pacifico), cursive' }}
             >
-              DirectivTravel
+              Barbados Bliss
             </span>
+            <span className="text-2xl leading-none">🌴</span>
           </Link>
 
           {/* Nav Links */}
