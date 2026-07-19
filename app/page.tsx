@@ -31,44 +31,34 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
 
-      {/* HERO: full-bleed photo, fades to white at bottom */}
-      <section className="relative overflow-hidden" style={{ height: '92vh' }}>
+      {/* HERO: full-bleed photo at top, fades to white, subtitle+CTAs on white below */}
+      <section className="relative">
 
-        {/* Photo — NO dark overlay */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/hotels/sandy-lane.jpg')" }}
-        />
+        {/* Photo block — NO overlay at all */}
+        <div className="relative w-full" style={{ height: '72vh' }}>
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('/hotels/sandy-lane.jpg')" }}
+          />
+          {/* Bottom fade to white */}
+          <div className="absolute bottom-0 left-0 right-0" style={{ height: '38%', background: 'linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0.85) 40%, transparent 100%)' }} />
 
-        {/* Bottom fade to white */}
-        <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-white via-white/80 to-transparent z-10" />
-
-        {/* Title sits high on the photo */}
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-start pt-28 px-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-sky-200 text-sky-600 text-sm font-medium mb-8 shadow-sm">
-            <span>✨</span><span>Powered by DirectivSys AI Orchestration</span>
-          </div>
-          <h1
-            className="text-5xl md:text-7xl font-extrabold text-white text-center leading-tight"
-            style={{ textShadow: '0 2px 20px rgba(0,0,0,0.35), 0 1px 4px rgba(0,0,0,0.5)' }}
-          >
-            Your Barbados
-            <span
-              className="block"
-              style={{
-                background: 'linear-gradient(90deg, #38bdf8, #06b6d4)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))',
-              }}
+          {/* Title anchored to top of photo */}
+          <div className="absolute top-0 left-0 right-0 pt-10 px-6 md:px-16 z-10">
+            <h1
+              className="text-5xl md:text-7xl font-extrabold text-white leading-tight"
+              style={{ textShadow: '0 2px 24px rgba(0,0,0,0.45), 0 1px 6px rgba(0,0,0,0.6)' }}
             >
-              Dream Trip
-            </span>
-          </h1>
+              Your Barbados Dream Trip
+            </h1>
+          </div>
         </div>
 
-        {/* Subtitle + CTAs in the fade zone */}
-        <div className="absolute bottom-0 left-0 right-0 z-20 pb-10 flex flex-col items-center px-4">
+        {/* Subtitle + CTAs — on white, below the photo */}
+        <div className="bg-white pt-4 pb-10 flex flex-col items-center px-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-50 border border-sky-200 text-sky-600 text-sm font-medium mb-5 shadow-sm">
+            <span>✨</span><span>Powered by DirectivSys AI Orchestration</span>
+          </div>
           <p className="text-lg md:text-xl text-slate-600 text-center max-w-2xl mb-6">
             Book hotels, flights, transfers, and dining — all through a single AI-powered conversation.
           </p>
