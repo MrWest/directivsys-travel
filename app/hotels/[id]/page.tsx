@@ -38,7 +38,7 @@ export default function HotelDetailPage({ params }: { params: Promise<{ id: stri
               <p className="text-slate-100 mt-1">📍 {hotel.location}</p>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-bold text-orange-300">${hotel.roomTypes[0].pricePerNight}</div>
+              <div className="text-3xl font-bold text-sky-300">${hotel.roomTypes[0].pricePerNight}</div>
               <div className="text-slate-100 text-sm">per night</div>
             </div>
           </div>
