@@ -33,7 +33,7 @@ export default function HotelDetailPage({ params }: { params: Promise<{ id: stri
           <Link href="/hotels" className="text-slate-100 hover:text-slate-700 text-sm mb-3 block">← Back to Hotels</Link>
           <div className="flex items-end justify-between">
             <div>
-              <div className="text-orange-100 text-lg mb-1">{'★'.repeat(hotel.stars)}</div>
+              <div className="text-orange-200 text-lg mb-1">{'★'.repeat(hotel.stars)}</div>
               <h1 className="text-4xl font-bold text-slate-100">{hotel.name}</h1>
               <p className="text-slate-100 mt-1">📍 {hotel.location}</p>
             </div>
