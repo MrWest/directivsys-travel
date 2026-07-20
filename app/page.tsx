@@ -82,11 +82,11 @@ export default function HomePage() {
           >
             {/* Subtitle + badge + CTAs — on white below the photo */}
             <div className="pt-3 pb-8 flex flex-col items-center px-4">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-50 border border-sky-200 text-sky-600 text-sm font-medium mb-4 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-50 border border-sky-200 text-sky-600 text-sm font-medium mb-6 shadow-sm">
                 <span>✨</span>
                 <span>Powered by DirectivSys AI Orchestration</span>
               </div>
-              <p className="text-lg md:text-xl text-slate-600 text-center max-w-2xl mb-6">
+              <p className="text-md md:text-lg text-slate-600 text-center max-w-3xl mb-6">
                 Book hotels, flights, transfers, and dining — all through a
                 single AI-powered conversation.
               </p>
