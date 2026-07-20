@@ -29,16 +29,16 @@ export default function DiningDetailPage({ params }: { params: Promise<{ id: str
         <Image src={restaurant.image} alt={restaurant.name} fill className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-800/10 to-transparent" />
         <div className="absolute bottom-8 left-0 right-0 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <Link href="/dining" className="text-slate-400 hover:text-slate-800 text-sm mb-3 block">← Back to Dining</Link>
+          <Link href="/dining" className="text-slate-100 hover:text-orange-300 text-sm mb-3 block">← Back to Dining</Link>
           <div className="flex items-end justify-between">
             <div>
               <span className="px-3 py-1 rounded-lg bg-rose-500/20 text-rose-500 text-sm font-medium mb-2 inline-block">{restaurant.cuisine}</span>
-              <h1 className="text-4xl font-bold text-slate-800">{restaurant.name}</h1>
-              <p className="text-slate-600 mt-1">📍 {restaurant.location}</p>
+              <h1 className="text-4xl font-bold text-slate-100">{restaurant.name}</h1>
+              <p className="text-slate-200 mt-1">📍 {restaurant.location}</p>
             </div>
             <div className="text-right">
               <div className="text-2xl font-bold text-rose-500">{restaurant.priceRange}</div>
-              <div className="text-slate-400 text-sm">price range</div>
+              <div className="text-slate-200 text-sm">price range</div>
             </div>
           </div>
         </div>
