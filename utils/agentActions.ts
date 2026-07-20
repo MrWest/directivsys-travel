@@ -79,7 +79,10 @@ function handleSearchEntities(
 
   const kw = keyword?.toLowerCase();
   const loc = location?.toLowerCase();
-  const feats = features?.map(f => f.toLowerCase()) ?? [];
+  const featuresArr: string[] = typeof features === 'string'
+    ? JSON.parse(features)
+    : (features ?? []);
+  const feats = featuresArr.map(f => f.toLowerCase());
 
   if (type === 'hotel') {
     let results = [...hotels];
