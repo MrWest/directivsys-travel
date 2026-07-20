@@ -34,12 +34,12 @@ export default function HotelDetailPage({ params }: { params: Promise<{ id: stri
           <div className="flex items-end justify-between">
             <div>
               <div className="text-sky-600 text-lg mb-1">{'★'.repeat(hotel.stars)}</div>
-              <h1 className="text-4xl font-bold text-slate-700">{hotel.name}</h1>
-              <p className="text-slate-600 mt-1">📍 {hotel.location}</p>
+              <h1 className="text-4xl font-bold text-slate-100">{hotel.name}</h1>
+              <p className="text-slate-100 mt-1">📍 {hotel.location}</p>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-bold text-sky-600">${hotel.roomTypes[0].pricePerNight}</div>
-              <div className="text-slate-400 text-sm">per night</div>
+              <div className="text-3xl font-bold text-sky-300">${hotel.roomTypes[0].pricePerNight}</div>
+              <div className="text-slate-100 text-sm">per night</div>
             </div>
           </div>
         </div>
