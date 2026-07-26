@@ -65,11 +65,15 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       {/* HERO — Concept C: vivid photo, title centered near top, smooth fade to white, subtitle+CTAs on white */}
       <section className="relative" style={{ minHeight: "calc(100vh - 64px)" }}>
-        {/* Photo — top 58% of viewport, NO overlay */}
+        {/* Video background — full hero height, muted, looping, no audio */}
         <div className="relative w-full" style={{ height: "70vh" }}>
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/hotels/sandy-lane.jpg')" }}
+          <video
+            className="absolute inset-0 w-full h-full object-cover"
+            src="/hero_bg.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
           />
           {/* Smooth fade to white at bottom */}
           <div
