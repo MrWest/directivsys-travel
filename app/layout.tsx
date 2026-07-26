@@ -13,6 +13,12 @@ const pacifico = Pacifico({ subsets: ['latin'], weight: '400', variable: '--font
 export const metadata: Metadata = {
   title: 'Barbados Bliss — Luxury Travel',
   description: 'Luxury travel booking powered by DirectivSys AI orchestration',
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
