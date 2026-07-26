@@ -135,14 +135,13 @@ export default function HomePage() {
               <button
                 key={tab}
                 onClick={() => setSearchTab(tab)}
-                className={`flex-1 py-4 text-sm font-semibold capitalize transition-colors flex items-center justify-center gap-2 ${
+                className={`flex-1 py-4 text-sm font-semibold capitalize transition-colors ${
                   searchTab === tab
                     ? "text-sky-600 border-b-2 border-sky-500 bg-sky-50/50"
                     : "text-slate-500 hover:text-slate-700 hover:bg-slate-50"
                 }`}
               >
-                {tab === "hotels" ? "🏨" : tab === "flights" ? "✈️" : "🍽️"}
-                {" "}{tab.charAt(0).toUpperCase() + tab.slice(1)}
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
               </button>
             ))}
           </div>
