@@ -320,26 +320,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CATEGORY CARDS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <h2 className="text-3xl font-bold text-slate-700 mb-8 text-center">
-          Plan Every Part of Your Trip
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* CATEGORY CARDS — Clean, professional grid */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-slate-800 mb-3">
+            Plan Every Part of Your Trip
+          </h2>
+          <p className="text-slate-500 text-lg max-w-2xl mx-auto">
+            Explore accommodations, flights, transfers, and dining all in one place.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {categories.map((cat) => (
             <Link
               key={cat.href}
               href={cat.href}
-              className={`group p-6 rounded-2xl border bg-gradient-to-br ${cat.color} hover:scale-105 transition-all duration-200`}
+              className="group p-8 rounded-2xl border border-slate-200 bg-white hover:border-sky-300 hover:shadow-lg transition-all duration-200"
             >
-              <div className="text-4xl mb-3">{cat.icon}</div>
-              <div className="text-slate-700 font-bold text-lg mb-1">
+              <div className="text-slate-800 font-bold text-xl mb-3">
                 {cat.label}
               </div>
-              <div className="text-slate-500 text-sm mb-2">
+              <div className="text-slate-500 text-sm mb-4 leading-relaxed">
                 {cat.description}
               </div>
-              <div className="text-slate-400 text-xs">{cat.count} options</div>
+              <div className="text-slate-400 text-xs font-medium">
+                {cat.count} {cat.count === 1 ? 'option' : 'options'}
+              </div>
             </Link>
           ))}
         </div>
@@ -408,10 +414,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TOP DINING */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      {/* TOP DINING — Professional, no emojis */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-bold text-slate-700">
+          <h2 className="text-3xl font-bold text-slate-800">
             Top Dining Experiences
           </h2>
           <Link
@@ -426,7 +432,7 @@ export default function HomePage() {
             <Link
               key={r.id}
               href={`/dining/${r.id}`}
-              className="group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-rose-200 hover:shadow-lg transition-all"
+              className="group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-sky-200 hover:shadow-lg transition-all"
             >
               <div className="relative h-52 overflow-hidden">
                 <Image
@@ -435,7 +441,7 @@ export default function HomePage() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute top-3 right-3 px-2 py-1 rounded-lg bg-white/90 text-rose-500 text-xs font-bold shadow-sm">
+                <div className="absolute top-3 right-3 px-2 py-1 rounded-lg bg-white/90 text-slate-700 text-xs font-bold shadow-sm">
                   {r.priceRange}
                 </div>
               </div>
@@ -443,12 +449,12 @@ export default function HomePage() {
                 <h3 className="text-slate-800 font-bold text-lg mb-1">
                   {r.name}
                 </h3>
-                <p className="text-slate-500 text-xs mb-2">📍 {r.location}</p>
+                <p className="text-slate-500 text-xs mb-2">{r.location}</p>
                 <p className="text-slate-500 text-sm mb-4 line-clamp-2">
                   {r.description}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="px-2 py-0.5 rounded-md bg-rose-50 text-rose-500 text-xs">
+                  <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-xs font-medium">
                     {r.cuisine}
                   </span>
                   <span className="text-slate-400 text-xs">
@@ -461,21 +467,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* AI CTA */}
+      {/* AI CTA — Sophisticated, no robot emoji */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="rounded-3xl bg-gradient-to-br from-sky-50 to-cyan-50 border border-sky-200 p-12 text-center">
-          <div className="text-5xl mb-4">🤖</div>
-          <h2 className="text-3xl font-bold text-slate-700 mb-4">
-            Let AI Plan Your Entire Trip
+        <div className="rounded-3xl bg-white border border-slate-200 p-12 md:p-16 text-center">
+          {/* Decorative line accent */}
+          <div className="w-12 h-1 bg-sky-500 mx-auto mb-8"></div>
+
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6 leading-tight">
+            Orchestrate Your Perfect Getaway
           </h2>
-          <p className="text-slate-500 text-lg max-w-2xl mx-auto mb-6">
-            Just tell the assistant what you need — hotel, flight, transfer,
-            dinner — and watch it handle everything in one conversation.
+
+          <p className="text-slate-600 text-lg max-w-3xl mx-auto mb-8 leading-relaxed">
+            Describe your ideal trip in natural language. Our AI assistant handles all the details — from finding the perfect suite to booking transfers, reservations, and dining experiences — all coordinated seamlessly in a single conversation.
           </p>
-          <p className="text-sky-600 text-sm font-medium">
-            💬 Try: &quot;Book Sandy Lane for 3 nights, a business class flight
-            from Miami, and dinner at The Cliff&quot;
-          </p>
+
+          {/* Example box — subtle, professional */}
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 max-w-2xl mx-auto mb-8">
+            <p className="text-slate-500 text-sm font-medium mb-2 uppercase tracking-wide">Example</p>
+            <p className="text-slate-700 text-base italic">
+              "I need a 3-night oceanfront stay, business class from Miami, and dinner reservations at The Cliff for our anniversary."
+            </p>
+          </div>
+
+          {/* CTA Button */}
+          <Link
+            href="/chat"
+            className="inline-block px-10 py-4 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-bold text-base transition-all shadow-md"
+          >
+            Start Planning
+          </Link>
         </div>
       </section>
     </div>
