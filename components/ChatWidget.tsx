@@ -73,7 +73,7 @@ export default function ChatWidget() {
       placeholder={
         isAuthenticated
           ? 'Book hotels, flights, transfers, dining...'
-          : 'Ask about hotels, flights, or dining in Barbados...'
+          : 'Ask about hotels, flights, dining...'
       }
       height="600px"
       width="420px"
