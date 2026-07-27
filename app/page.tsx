@@ -467,16 +467,16 @@ export default function HomePage() {
       </section>
 
       {/* AI CTA — Sophisticated, no robot emoji */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="rounded-3xl bg-white border border-slate-200 p-12 md:p-16 text-center">
+      <section className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-4 pb-20">
+        <div className="rounded-3xl bg-white border border-slate-200 p-4 md:p-8 text-center">
           {/* Decorative line accent */}
-          <div className="w-12 h-1 bg-sky-500 mx-auto mb-8"></div>
+          <div className="w-12 h-1 bg-sky-500 mx-auto mb-4"></div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 leading-tight">
             Orchestrate Your Perfect Getaway
           </h2>
 
-          <p className="text-slate-600 text-lg max-w-3xl mx-auto mb-8 leading-relaxed">
+          <p className="text-slate-600 text-lg max-w-3xl mx-auto mb-4 leading-relaxed">
             Describe your ideal trip in natural language. Our AI assistant handles all the details — from finding the perfect suite to booking transfers, reservations, and dining experiences — all coordinated seamlessly in a single conversation.
           </p>
 
@@ -484,7 +484,7 @@ export default function HomePage() {
           <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 max-w-2xl mx-auto mb-8">
             <p className="text-slate-500 text-sm font-medium mb-2 uppercase tracking-wide">Example</p>
             <p className="text-slate-700 text-base italic">
-              "I need a 3-night oceanfront stay, business class from Miami, and dinner reservations at The Cliff for our anniversary."
+              "I need a luxury business trip to Barbados for September 10-13. Book me a 5-star resort with golf courses, first-class flights from New York, a luxury car transfer, and fine dining reservations. I'm platinum tier, so I expect premium everything."
             </p>
           </div>
 
