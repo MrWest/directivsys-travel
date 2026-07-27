@@ -392,7 +392,9 @@ function handleBookHotel(
   if (checkOutError) return fail(checkOutError);
   const nights = Math.ceil((checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24));
   const requestedRoom = roomType
-    ? hotel.roomTypes.find(rt => rt.name.toLowerCase().includes(roomType.toLowerCase()))
+    ? hotel.roomTypes.find(rt => 
+        rt.id === roomType || rt.name.toLowerCase().includes(roomType.toLowerCase())
+      )
     : hotel.roomTypes[0];
   if (!requestedRoom) return fail(`Room type "${roomType}" not found at ${hotel.name}.`);
   if (guests > requestedRoom.capacity) return fail(`${requestedRoom.name} accommodates max ${requestedRoom.capacity} guests.`);
