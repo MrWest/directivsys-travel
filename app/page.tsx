@@ -472,7 +472,7 @@ export default function HomePage() {
           {/* Decorative line accent */}
           <div className="w-12 h-1 bg-sky-500 mx-auto mb-4"></div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 leading-tight">
+          <h2 className="text-2xl md:text-4xl font-bold text-slate-800 mb-4 leading-tight">
             Orchestrate Your Perfect Getaway
           </h2>
 
