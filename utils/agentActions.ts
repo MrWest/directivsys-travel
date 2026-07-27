@@ -750,7 +750,7 @@ function handleRequestSpecialArrangement(
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 12. sendBookingConfirmation
+// 12. sendBookingConfirmation.
 // ─────────────────────────────────────────────────────────────────────────────
 function handleSendBookingConfirmation(
   params: Record<string, unknown>,
