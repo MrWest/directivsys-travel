@@ -20,6 +20,22 @@ function ok(summary: string, data: Record<string, unknown> = {}): ToolResult {
 function fail(summary: string): ToolResult {
   return { status: 'error', summary, result_items: [], detailed_data: {} };
 }
+
+function validateFutureDate(dateStr: string): string | null {
+  try {
+    const bookingDate = new Date(dateStr);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    if (bookingDate < today) {
+      const todayStr = today.toISOString().split('T')[0];
+      return `Booking dates must be in the future. Today is ${todayStr}.`;
+    }
+    return null;
+  } catch (error) {
+    return 'Invalid date format.';
+  }
+}
 function hotelToItem(h: Hotel): ViewingItem {
   return {
     id: h.id, name: h.name, type: 'Hotel',
@@ -362,9 +378,18 @@ function handleBookHotel(
   };
   const hotel = getHotelById(hotelId);
   if (!hotel) return fail(`Hotel "${hotelId}" not found.`);
+  
+  // Validate check-in date is in the future
+  const checkInError = validateFutureDate(checkIn);
+  if (checkInError) return fail(checkInError);
+  
   const checkInDate = new Date(checkIn);
   const checkOutDate = new Date(checkOut);
   if (checkInDate >= checkOutDate) return fail('Check-out must be after check-in.');
+  
+  // Validate check-out date is in the future
+  const checkOutError = validateFutureDate(checkOut);
+  if (checkOutError) return fail(checkOutError);
   const nights = Math.ceil((checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24));
   const requestedRoom = roomType
     ? hotel.roomTypes.find(rt => rt.name.toLowerCase().includes(roomType.toLowerCase()))
@@ -412,6 +437,11 @@ function handleBookFlight(
   const { flightId, date, passengers, class: cabinClass } = params as {
     flightId: string; date: string; passengers: number; class: 'economy' | 'business' | 'first';
   };
+  
+  // Validate departure date is in the future
+  const dateError = validateFutureDate(date);
+  if (dateError) return fail(dateError);
+  
   const flight = getFlightById(flightId);
   if (!flight) return fail(`Flight "${flightId}" not found.`);
   const classPrice = cabinClass === 'business' ? flight.classes.business :
@@ -454,6 +484,11 @@ function handleBookTaxi(
     pickupLocation: string; dropoffLocation: string;
     passengers: number; flightNumber?: string;
   };
+  
+  // Validate pickup date is in the future
+  const dateError = validateFutureDate(date);
+  if (dateError) return fail(dateError);
+  
   const taxi = getTaxiById(taxiId);
   if (!taxi) return fail(`Transfer "${taxiId}" not found.`);
   if (passengers > taxi.capacity) return fail(`This vehicle fits max ${taxi.capacity} passengers.`);
@@ -488,6 +523,11 @@ function handleBookDining(
     restaurantId: string; date: string; time: string;
     partySize: number; dietaryRequirements?: string; occasion?: string;
   };
+  
+  // Validate reservation date is in the future
+  const dateError = validateFutureDate(date);
+  if (dateError) return fail(dateError);
+  
   const restaurant = getRestaurantById(restaurantId);
   if (!restaurant) return fail(`Restaurant "${restaurantId}" not found.`);
   if (partySize > restaurant.maxPartySize) return fail(`${restaurant.name} accommodates max ${restaurant.maxPartySize} guests.`);
