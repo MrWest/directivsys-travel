@@ -754,6 +754,7 @@ export function createAgentActions(callbacks: AgentCallbacks) {
   } = callbacks;
 
   return async (toolName: string, params: Record<string, unknown>): Promise<ToolResult> => {
+    console.log(`Agent action requested: ${toolName}`, params);
     switch (toolName) {
       // ── Lean 12-tool canonical set ────────────────────────────────────────────
       case 'searchEntities':
