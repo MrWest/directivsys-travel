@@ -476,7 +476,7 @@ export default function HomePage() {
             Orchestrate Your Perfect Getaway
           </h2>
 
-          <p className="text-slate-600 text-md max-w-6xl mx-auto mb-4 leading-relaxed">
+          <p className="text-slate-600 text-md max-w-4xl mx-auto mb-4 leading-relaxed">
             Describe your ideal trip in natural language. Our AI assistant handles all the details — from finding the perfect suite to booking transfers, reservations, and dining experiences — all coordinated seamlessly in a single conversation.
           </p>
 
